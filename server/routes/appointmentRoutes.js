@@ -15,5 +15,3 @@ router.get("/", getAppointments);
 router.get("/latest", getLatestAppointment);
 
 module.exports = router;
-
-router.get("/", getAppointments);

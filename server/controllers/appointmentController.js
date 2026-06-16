@@ -86,24 +86,3 @@ module.exports = {
   getAppointments,
   getLatestAppointment,
 };
-
-// Get All Appointments
-const getAppointments = async (req, res) => {
-  try {
-    const appointments = await Appointment.find().sort({
-      createdAt: -1,
-    });
-
-    res.status(200).json(appointments);
-  } catch (error) {
-    res.status(500).json({
-      message: error.message,
-    });
-  }
-};
-
-module.exports = {
-  bookAppointment,
-  getAppointments,
-  getLatestAppointment,
-};
