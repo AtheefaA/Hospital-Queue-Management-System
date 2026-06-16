@@ -1,0 +1,381 @@
+/* ==========================
+   GLOBAL STYLES
+========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5f7fa;
+  
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* /* ==========================
+   NAVBAR
+========================== */
+
+/* .navbar {
+  width: 100%;
+  height: 75px;
+  background: #1976d2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.logo {
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffd54f;
+}
+
+/* ── Hamburger Button ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.hamburger:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.bar {
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  background: #ffffff;
+  border-radius: 3px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* Animate to X when open */
+.hamburger.is-open .bar:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+.hamburger.is-open .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.is-open .bar:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* ── Mobile Dropdown ── */
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 75px;
+  left: 0;
+  width: 100%;
+  background: #1976d2;
+  z-index: 999;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease, box-shadow 0.3s ease;
+}
+
+.mobile-menu.active {
+  max-height: 400px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.mobile-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0 16px;
+}
+
+.mobile-menu ul li a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 8%;
+  border-left: 3px solid transparent;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.mobile-menu ul li a:hover {
+  color: #ffd54f;
+  background: rgba(255, 255, 255, 0.1);
+  border-left-color: #ffd54f;
+}
+
+/* ── Overlay ── */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  background: transparent;
+}
+
+/* ── Mobile ≤ 768px ── */
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 0 20px;
+    position: sticky; /* keeps dropdown inside flow */
+  }
+
+  .nav-links {
+    display: none; /* hide desktop links */
+  }
+
+  .hamburger {
+    display: flex; /* show hamburger */
+  }
+
+  .mobile-menu {
+    display: block; /* enable slide-down */
+  }
+}
+
+/* ── Small Mobile ≤ 480px ── */
+@media screen and (max-width: 480px) {
+  .logo {
+    font-size: 22px;
+  }
+} */ */
+
+
+/* ==========================
+   HERO SECTION
+========================== */
+
+.hero {
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 8%;
+  text-align: center;
+  background: linear-gradient(to right, #eef5ff, #ffffff);
+}
+
+.hero h1 {
+  font-size: 60px;
+  color: #0d47a1;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  max-width: 900px;
+  font-size: 22px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 35px;
+}
+
+.hero button {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 15px 35px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.hero button:hover {
+  background: #0d47a1;
+}
+
+/* ==========================
+   FEATURES
+========================== */
+
+.features {
+  width: 100%;
+  padding: 70px 8%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  background: #f8fbff;
+}
+
+.card {
+  background: white;
+  padding: 35px 25px;
+  border-radius: 15px;
+  text-align: center;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card h3 {
+  color: #1565c0;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: #555;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* ==========================
+   ABOUT
+========================== */
+
+.about {
+  width: 100%;
+  padding: 80px 8%;
+  background: white;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 42px;
+  color: #1565c0;
+  margin-bottom: 25px;
+}
+
+.about p {
+  max-width: 1000px;
+  margin: auto;
+  font-size: 19px;
+  line-height: 1.9;
+  color: #555;
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+.footer {
+  width: 100%;
+  background: #1565c0;
+  color: white;
+  text-align: center;
+  padding: 25px;
+}
+
+.footer p {
+  font-size: 16px;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width: 992px) {
+  .hero h1 {
+    font-size: 45px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+
+  .nav-links {
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .hero {
+    padding: 50px 20px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .features {
+    padding: 40px 20px;
+  }
+
+  .about {
+    padding: 50px 20px;
+  }
+
+  .about h2 {
+    font-size: 30px;
+  }
+
+  .about p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero button {
+    width: 100%;
+  }
+}

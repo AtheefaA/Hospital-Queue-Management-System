@@ -1,0 +1,190 @@
+/* ===========================
+   GLOBAL
+=========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fb;
+}
+
+/* ===========================
+   APPOINTMENT PAGE
+=========================== */
+
+.appointment-page {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 20px;
+
+  background: linear-gradient(135deg, #e3f2fd, #ffffff);
+}
+
+/* ===========================
+   CONTAINER
+=========================== */
+
+.appointment-container {
+  width: 100%;
+  max-width: 700px;
+
+  background: #ffffff;
+
+  padding: 40px;
+
+  border-radius: 20px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-container h1 {
+  text-align: center;
+
+  color: #1565c0;
+
+  margin-bottom: 35px;
+
+  font-size: 34px;
+}
+
+/* ===========================
+   FORM
+=========================== */
+
+form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+/* ===========================
+   INPUT GROUP
+=========================== */
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: 16px;
+
+  font-weight: 600;
+
+  margin-bottom: 8px;
+
+  color: #333;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  width: 100%;
+
+  padding: 14px;
+
+  border: 1px solid #d0d0d0;
+
+  border-radius: 10px;
+
+  font-size: 16px;
+
+  outline: none;
+
+  transition: 0.3s;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+  border-color: #1976d2;
+
+  box-shadow: 0 0 8px rgba(25, 118, 210, 0.2);
+}
+
+.input-group textarea {
+  resize: vertical;
+
+  min-height: 120px;
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.appointment-btn {
+  width: 100%;
+
+  padding: 15px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #1976d2;
+
+  color: white;
+
+  font-size: 18px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.appointment-btn:hover {
+  background: #0d47a1;
+
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 768px) {
+  .appointment-container {
+    padding: 30px 20px;
+  }
+
+  .appointment-container h1 {
+    font-size: 28px;
+  }
+
+  .input-group input,
+  .input-group select,
+  .input-group textarea {
+    font-size: 15px;
+  }
+
+  .appointment-btn {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .appointment-page {
+    padding: 20px 10px;
+  }
+
+  .appointment-container {
+    padding: 20px 15px;
+  }
+
+  .appointment-container h1 {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,308 @@
+/* ── Page ── */
+.manage-page {
+  min-height: 100vh;
+  padding: 36px 24px;
+  background: #f0f4f8;
+  box-sizing: border-box;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+.manage-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.manage-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 4px;
+}
+
+.manage-subtitle {
+  font-size: 14px;
+  color: #607d8b;
+  margin: 0;
+}
+
+.manage-refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 1.5px solid #1976d2;
+  border-radius: 50px;
+  background: transparent;
+  color: #1976d2;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.manage-refresh-btn:hover:not(:disabled) {
+  background: #1976d2;
+  color: #fff;
+}
+
+.manage-refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Spin animation for refresh icon ── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  display: inline-block;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ── Error banner ── */
+.manage-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff5f5;
+  border: 1px solid #ffcdd2;
+  border-radius: 10px;
+  color: #c62828;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+}
+
+.manage-error .ti {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* ── Loading skeleton ── */
+.manage-skeleton {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.skeleton-row {
+  display: flex;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f4f8;
+}
+
+.skeleton-cell {
+  height: 14px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #e8edf2 25%, #f5f7fa 50%, #e8edf2 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  flex: 1;
+}
+
+.skeleton-cell.wide  { flex: 2; }
+.skeleton-cell.narrow { flex: 0.6; }
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Empty state ── */
+.manage-empty {
+  text-align: center;
+  padding: 64px 20px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.manage-empty .ti {
+  font-size: 52px;
+  color: #b0bec5;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.manage-empty p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #37474f;
+  margin: 0 0 8px;
+}
+
+.manage-empty span {
+  font-size: 14px;
+  color: #90a4ae;
+}
+
+/* ── Table container ── */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  background: #fff;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Table ── */
+table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+}
+
+table thead {
+  background: #1976d2;
+}
+
+table th {
+  color: #fff;
+  padding: 16px 18px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+
+table th .ti {
+  font-size: 14px;
+  margin-right: 6px;
+  vertical-align: -2px;
+  opacity: 0.85;
+}
+
+table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #f0f4f8;
+  color: #37474f;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+table tbody tr {
+  transition: background 0.2s;
+}
+
+table tbody tr:hover {
+  background: #f2f8ff;
+}
+
+table tbody tr:nth-child(even) {
+  background: #fafbfc;
+}
+
+table tbody tr:nth-child(even):hover {
+  background: #eef6ff;
+}
+
+/* ── Patient cell with avatar ── */
+.patient-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.patient-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e3f2fd;
+  color: #1976d2;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Badges ── */
+.dept-badge {
+  display: inline-block;
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.token-badge {
+  display: inline-block;
+  background: #fff3e0;
+  color: #e65100;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* ── Tablet ── */
+@media (max-width: 768px) {
+  .manage-page {
+    padding: 24px 14px;
+  }
+
+  .manage-title {
+    font-size: 1.4rem;
+  }
+
+  table {
+    min-width: 620px;
+  }
+
+  table th,
+  table td {
+    padding: 12px 14px;
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  .manage-page {
+    padding: 16px 10px;
+  }
+
+  .manage-title {
+    font-size: 1.2rem;
+  }
+
+  .manage-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .manage-refresh-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  table {
+    min-width: 580px;
+  }
+
+  table th,
+  table td {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}

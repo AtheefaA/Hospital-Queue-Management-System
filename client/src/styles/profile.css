@@ -1,0 +1,287 @@
+/* ── Page layout ── */
+.profile-page {
+  min-height: 100vh;
+  background: #f0f4f8;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+.profile-container {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Header (avatar + name) ── */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.profile-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #1976d2;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 1px;
+}
+
+.profile-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.profile-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0;
+}
+
+.profile-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #2e7d32;
+  background: #e8f5e9;
+  padding: 3px 10px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+/* ── Card ── */
+.profile-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #90a4ae;
+  margin: 0;
+}
+
+/* ── Info rows ── */
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.profile-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f4f8;
+}
+
+.profile-row:last-child {
+  border-bottom: none;
+}
+
+.profile-row-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #607d8b;
+}
+
+.profile-row-label .ti {
+  font-size: 16px;
+  color: #1976d2;
+}
+
+.profile-row-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a202c;
+}
+
+/* ── Action buttons ── */
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.profile-btn {
+  width: 100%;
+  padding: 13px 20px;
+  border: 1.5px solid #1976d2;
+  border-radius: 50px;
+  background: transparent;
+  color: #1976d2;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.profile-btn:hover {
+  background: #1976d2;
+  color: #fff;
+}
+
+/* ── Logout button ── */
+.logout-btn {
+  width: 100%;
+  padding: 13px 24px;
+  border: none;
+  border-radius: 50px;
+  background: #ff416c;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 16px rgba(255, 65, 108, 0.3);
+}
+
+.logout-btn:hover {
+  background: #e0304f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 65, 108, 0.4);
+}
+
+.logout-btn:active {
+  transform: scale(0.97);
+}
+
+.logout-divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.logout-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.1;
+}
+
+.logout-main {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.logout-sub {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-top: 2px;
+}
+
+/* ── Logout confirmation ── */
+.logout-confirm {
+  background: #fff5f5;
+  border: 1px solid #ffcdd2;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  text-align: center;
+}
+
+.logout-confirm p {
+  font-size: 14px;
+  color: #c62828;
+  font-weight: 500;
+  margin: 0;
+}
+
+.logout-confirm-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.confirm-yes {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 50px;
+  background: #ff416c;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.confirm-yes:hover { background: #e0304f; }
+
+.confirm-no {
+  flex: 1;
+  padding: 10px;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 50px;
+  background: transparent;
+  color: #607d8b;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.confirm-no:hover { background: #f5f7fa; }
+
+/* ── Empty state ── */
+.profile-empty-icon {
+  font-size: 48px;
+  color: #b0bec5;
+  text-align: center;
+}
+
+.profile-empty-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a202c;
+  text-align: center;
+  margin: 0;
+}
+
+.profile-empty-sub {
+  font-size: 14px;
+  color: #607d8b;
+  text-align: center;
+  margin: 0;
+}
