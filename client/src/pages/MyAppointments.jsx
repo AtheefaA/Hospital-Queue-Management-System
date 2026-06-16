@@ -9,28 +9,44 @@ function MyAppointments() {
   const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
-    fetchAppointments();
+    if (user?.email) {
+      fetchAppointments();
+    } else {
+      setLoading(false);
+    }
   }, []);
 
   const fetchAppointments = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/appointments"
+        "http://localhost:5000/api/appointments/all"
       );
 
-      // Show only logged-in user's appointments
       const myAppointments = res.data.filter(
-        (item) => item.email === user?.email
+        (appointment) => appointment.email === user.email
       );
 
       setAppointments(myAppointments);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       alert("Failed to load appointments");
     } finally {
       setLoading(false);
     }
   };
+
+  if (!user) {
+    return (
+      <div className="appointments-page">
+        <div className="appointments-container">
+          <h1>📋 My Appointments</h1>
+          <p className="no-data">
+            Please login to view your appointments.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="appointments-page">
@@ -38,61 +54,72 @@ function MyAppointments() {
         <h1>📋 My Appointments</h1>
 
         {loading ? (
-          <p>Loading...</p>
+          <div className="loading">
+            <h3>Loading appointments...</h3>
+          </div>
         ) : appointments.length === 0 ? (
-          <p>No appointments found.</p>
+          <div className="no-data">
+            <h3>No appointments found.</h3>
+          </div>
         ) : (
           appointments.map((appointment) => (
             <div
               className="appointment-card"
               key={appointment._id}
             >
-              <h2>{appointment.patientName}</h2>
+              <div className="card-header">
+                <h2>{appointment.patientName}</h2>
 
-              <p>
-                <strong>📧 Email:</strong>{" "}
-                {appointment.email}
-              </p>
+                <span
+                  className={`status ${appointment.status
+                    ?.toLowerCase()
+                    .replace(/\s+/g, "")}`}
+                >
+                  {appointment.status || "Waiting"}
+                </span>
+              </div>
 
-              <p>
-                <strong>📱 Phone:</strong>{" "}
-                {appointment.phone}
-              </p>
+              <div className="card-content">
+                <p>
+                  <strong>🎫 Token :</strong>{" "}
+                  {appointment.tokenNumber}
+                </p>
 
-              <p>
-                <strong>👨‍⚕️ Doctor:</strong>{" "}
-                {appointment.doctor}
-              </p>
+                <p>
+                  <strong>📧 Email :</strong>{" "}
+                  {appointment.email}
+                </p>
 
-              <p>
-                <strong>🏥 Department:</strong>{" "}
-                {appointment.department}
-              </p>
+                <p>
+                  <strong>📱 Phone :</strong>{" "}
+                  {appointment.phone}
+                </p>
 
-              <p>
-                <strong>📅 Date:</strong>{" "}
-                {appointment.date}
-              </p>
+                <p>
+                  <strong>👨‍⚕️ Doctor :</strong>{" "}
+                  {appointment.doctor}
+                </p>
 
-              <p>
-                <strong>🕒 Time:</strong>{" "}
-                {appointment.time}
-              </p>
+                <p>
+                  <strong>🏥 Department :</strong>{" "}
+                  {appointment.department}
+                </p>
 
-              <p>
-                <strong>🩺 Symptoms:</strong>{" "}
-                {appointment.symptoms}
-              </p>
+                <p>
+                  <strong>📅 Date :</strong>{" "}
+                  {appointment.date}
+                </p>
 
-              <p>
-                <strong>🎫 Token:</strong>{" "}
-                {appointment.tokenNumber || "Not Assigned"}
-              </p>
+                <p>
+                  <strong>🕒 Time :</strong>{" "}
+                  {appointment.time}
+                </p>
 
-              <p>
-                <strong>📢 Status:</strong>{" "}
-                {appointment.status || "Waiting"}
-              </p>
+                <p>
+                  <strong>🩺 Symptoms :</strong>{" "}
+                  {appointment.symptoms}
+                </p>
+              </div>
             </div>
           ))
         )}
@@ -102,4 +129,3 @@ function MyAppointments() {
 }
 
 export default MyAppointments;
-

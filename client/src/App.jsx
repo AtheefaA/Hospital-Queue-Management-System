@@ -9,23 +9,27 @@ import "./App.css";
 
 import Navbar from "./components/Navbar";
 
+// Main Pages
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+
+// Appointment Pages
 import BookAppointment from "./pages/BookAppointment";
 import QueueStatus from "./pages/QueueStatus";
+import MyAppointments from "./pages/MyAppointments";
 
 // Dashboard Pages
 import PatientDashboard from "./pages/PatientDashboard";
 import DoctorDashboard from "./pages/DoctorDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 
-// Future Pages
+// Other Pages
 import Doctors from "./pages/Doctors";
-import MyAppointments from "./pages/MyAppointments";
 import Profile from "./pages/Profile";
-
 import ManageAppointments from "./pages/ManageAppointments";
+import CompletedPatients from "./pages/CompletedPatients";
+import Reports from "./pages/Reports";
 
 function App() {
   return (
@@ -46,48 +50,65 @@ function App() {
           element={<BookAppointment />}
         />
 
-        {/* Queue */}
+        {/* Queue Status */}
         <Route
           path="/queue"
           element={<QueueStatus />}
         />
 
-        {/* Dashboard Routes */}
+        {/* Patient Dashboard */}
         <Route
           path="/dashboard/patient"
           element={<PatientDashboard />}
         />
 
+        {/* Doctor Dashboard */}
         <Route
           path="/dashboard/doctor"
           element={<DoctorDashboard />}
         />
 
+        {/* Admin Dashboard */}
         <Route
           path="/dashboard/admin"
           element={<AdminDashboard />}
         />
 
-        {/* Future Routes */}
+        {/* Doctors */}
+        <Route
+          path="/doctors"
+          element={<Doctors />}
+        />
 
-        
-        <Route path="/doctors" element={<Doctors />} />
-
+        {/* My Appointments */}
         <Route
           path="/myappointments"
-          element={<MyAppointments />} />
-        
+          element={<MyAppointments />}
+        />
 
+        {/* Profile */}
         <Route
           path="/profile"
           element={<Profile />}
         />
+
+        {/* Manage Appointments */}
         <Route
-        path="/manage-appointments"
-        element={<ManageAppointments />}
-      />
-       
-        
+          path="/manage-appointments"
+          element={<ManageAppointments />}
+        />
+
+        {/* Completed Patients */}
+        <Route
+          path="/completed-patients"
+          element={<CompletedPatients />}
+        />
+
+        {/* Reports */}
+        <Route
+          path="/reports"
+          element={<Reports />}
+        />
       </Routes>
     </BrowserRouter>
   );

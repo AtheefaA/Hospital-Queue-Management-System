@@ -1,0 +1,64 @@
+.completed-page {
+  min-height: 100vh;
+  background: #f5f9ff;
+  padding: 40px 20px;
+}
+
+.completed-container {
+  max-width: 1200px;
+  margin: auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.completed-container h1 {
+  color: #1565c0;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #1976d2;
+  color: white;
+}
+
+th,
+td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+tr:hover {
+  background: #f8fbff;
+}
+
+.status.completed {
+  background: #4caf50;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.empty-card {
+  text-align: center;
+  padding: 50px;
+  color: #777;
+}

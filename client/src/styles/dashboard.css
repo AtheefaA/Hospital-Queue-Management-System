@@ -1,89 +1,62 @@
-/* ===========================
-   DASHBOARD PAGE
-=========================== */
+/* ==========================================================================
+   1. Design System & Variables
+   ========================================================================== */
+:root {
+  --primary-color: #1976d2;
+  --primary-hover: #1259a7;
+  --bg-page: #f4f8fc;
+  --bg-card: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-light: #e2e8f0;
+  
+  /* Status Colors */
+  --color-waiting: #f59e0b;
+  --color-completed: #10b981;
+  --color-cancelled: #ef4444;
+}
 
+/* ==========================================================================
+   2. Dashboard Page Layout & Global Overrides
+   ========================================================================== */
 .dashboard-page {
   min-height: 100vh;
-  background: #f4f8fc;
+  background-color: var(--bg-page);
   padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
 }
 
 .dashboard-container {
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .dashboard-title {
   text-align: center;
-  font-size: 36px;
-  color: #1976d2;
-  margin-bottom: 10px;
+  font-size: 2.25rem; /* 36px */
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0 0 10px 0;
+  letter-spacing: -0.5px;
+}
+
+.dashboard-title::before {
+  content: "🏥 ";
 }
 
 .dashboard-subtitle {
   text-align: center;
-  color: #666;
-  margin-bottom: 40px;
-  font-size: 18px;
+  color: var(--text-muted);
+  margin: 0 0 40px 0;
+  font-size: 1.125rem; /* 18px */
+  font-weight: 400;
 }
 
-/* ===========================
-   DASHBOARD CARDS
-=========================== */
-
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-}
-
-.dashboard-card {
-  background: white;
-  border-radius: 15px;
-  padding: 25px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  transition: 0.3s;
-  cursor: pointer;
-}
-
-.dashboard-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.dashboard-card h3 {
-  color: #1976d2;
-  margin-bottom: 15px;
-  font-size: 22px;
-}
-
-.dashboard-card p {
-  color: #666;
-  line-height: 1.6;
-  font-size: 15px;
-}
-
-.dashboard-card button {
-  margin-top: 20px;
-  width: 100%;
-  padding: 12px;
-  border: none;
-  background: #1976d2;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 15px;
-  transition: 0.3s;
-}
-
-.dashboard-card button:hover {
-  background: #1259a7;
-}
-
-/* ===========================
-   STATS CARDS
-=========================== */
-
+/* ==========================================================================
+   3. Top Metrics / Stats Cards Grid
+   ========================================================================== */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -92,114 +65,224 @@
 }
 
 .stat-card {
-  background: white;
+  background: var(--bg-card);
   padding: 25px;
-  border-radius: 15px;
+  border-radius: 14px;
   text-align: center;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--border-light);
+  transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
 }
 
 .stat-card h2 {
-  color: #1976d2;
-  font-size: 32px;
-  margin-bottom: 10px;
+  color: var(--primary-color);
+  font-size: 2rem; /* 32px */
+  font-weight: 800;
+  margin: 0 0 6px 0;
 }
 
 .stat-card p {
-  color: #666;
-  font-size: 16px;
+  color: var(--text-muted);
+  font-size: 1rem; /* 16px */
+  font-weight: 600;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
-/* ===========================
-   TABLE
-=========================== */
+/* Injecting Context Emojis to Stats items dynamically based on child ordering */
+.stats-grid .stat-card:nth-child(1) p::before { content: "🎟️"; }
+.stats-grid .stat-card:nth-child(2) p::before { content: "⏳"; }
+.stats-grid .stat-card:nth-child(3) p::before { content: "✅"; }
+
+/* ==========================================================================
+   4. Feature/Navigation Cards Grid
+   ========================================================================== */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.dashboard-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border-light);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 22px rgba(25, 118, 210, 0.12);
+  border-color: rgba(25, 118, 210, 0.2);
+}
+
+.dashboard-card h3 {
+  color: var(--primary-color);
+  margin: 0 0 12px 0;
+  font-size: 1.375rem; /* 22px */
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Adding Action card visual hints */
+.dashboard-grid .dashboard-card:nth-child(1) h3::before { content: "📅"; }
+.dashboard-grid .dashboard-card:nth-child(2) h3::before { content: "🔍"; }
+.dashboard-grid .dashboard-card:nth-child(3) h3::before { content: "👤"; }
+
+.dashboard-card p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 0.95rem; /* 15px */
+  margin: 0;
+  flex-grow: 1;
+}
+
+.dashboard-card button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: var(--primary-color);
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem; /* 15px */
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.dashboard-card button:hover {
+  background: var(--primary-hover);
+}
+
+.dashboard-card button:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   5. Responsive Patient Data Table
+   ========================================================================== */
+/* Wrap table element inside a dynamic container wrapper to enforce smooth mobile scrolling */
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 35px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--border-light);
+  background: var(--bg-card);
+}
 
 .dashboard-table {
   width: 100%;
   border-collapse: collapse;
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-top: 30px;
+  background: var(--bg-card);
+  margin: 0;
 }
 
 .dashboard-table th {
-  background: #1976d2;
-  color: white;
-  padding: 15px;
+  background: var(--primary-color);
+  color: #ffffff;
+  padding: 16px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
 }
 
 .dashboard-table td {
-  padding: 15px;
+  padding: 16px;
   text-align: center;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+.dashboard-table tr:last-child td {
+  border-bottom: none;
 }
 
 .dashboard-table tr:hover {
-  background: #f8f8f8;
+  background: #f8fafc;
 }
 
-/* ===========================
-   STATUS BADGES
-=========================== */
-
+/* ==========================================================================
+   6. Data Pill Status Badges
+   ========================================================================== */
 .status {
   padding: 6px 14px;
   border-radius: 20px;
-  color: white;
-  font-size: 14px;
+  color: #ffffff;
+  font-size: 0.875rem; /* 14px */
+  font-weight: 600;
+  display: inline-block;
+  text-transform: capitalize;
 }
 
-.waiting {
-  background: orange;
+.status.waiting {
+  background-color: var(--color-waiting);
+  color: #78350f;
+  background-opacity: 0.15; /* Modern soft background design update */
+  background: #fef3c7;
+  border: 1px solid #fde68a;
 }
 
-.completed {
-  background: green;
+.status.completed {
+  color: #065f46;
+  background: #d1fae5;
+  border: 1px solid #a7f3d0;
 }
 
-.cancelled {
-  background: red;
+.status.cancelled {
+  color: #991b1b;
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
 }
 
-/* ===========================
-   RESPONSIVE
-=========================== */
-
+/* ==========================================================================
+   7. Device Layout Breakthrough Breakpoints (Media Queries)
+   ========================================================================== */
 @media (max-width: 768px) {
   .dashboard-title {
-    font-size: 28px;
+    font-size: 1.75rem; /* 28px */
   }
 
   .dashboard-subtitle {
-    font-size: 16px;
+    font-size: 1rem; /* 16px */
+    margin-bottom: 30px;
   }
 
   .dashboard-card {
-    padding: 20px;
-  }
-
-  .dashboard-table {
-    display: block;
-    overflow-x: auto;
+    padding: 22px;
   }
 }
 
 @media (max-width: 480px) {
   .dashboard-page {
-    padding: 20px 10px;
+    padding: 20px 12px;
   }
 
   .dashboard-title {
-    font-size: 24px;
+    font-size: 1.5rem; /* 24px */
   }
 
   .dashboard-card h3 {
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
   }
 
   .stat-card h2 {
-    font-size: 26px;
+    font-size: 1.625rem; /* 26px */
   }
 }
-

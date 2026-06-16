@@ -4,29 +4,66 @@ import "../styles/queue.css";
 
 function QueueStatus() {
   const [queue, setQueue] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     fetchQueueStatus();
   }, []);
 
   const fetchQueueStatus = async () => {
+    setLoading(true);
+    setError("");
+
     try {
-      // Get latest appointment
+      const user = JSON.parse(localStorage.getItem("user"));
+
+      if (!user || !user.email) {
+        setError("Please book an appointment first.");
+        setLoading(false);
+        return;
+      }
+
       const res = await axios.get(
-        "http://localhost:5000/api/appointments/latest"
+        `http://localhost:5000/api/appointments/latest?email=${user.email}`
       );
 
       setQueue(res.data);
-    } catch (error) {
-      console.error(error);
-      alert("Failed to load queue status");
+    } catch (err) {
+      console.error(err);
+
+      setError(
+        err.response?.data?.message ||
+          "Failed to fetch queue status."
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
-  if (!queue) {
+  if (loading) {
     return (
       <div className="queue-page">
-        <h2>Loading Queue Status...</h2>
+        <div className="queue-container">
+          <h2>Loading Queue...</h2>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="queue-page">
+        <div className="queue-container">
+          <h2>{error}</h2>
+
+          <button
+            className="queue-btn"
+            onClick={fetchQueueStatus}
+          >
+            Refresh
+          </button>
+        </div>
       </div>
     );
   }
@@ -34,50 +71,55 @@ function QueueStatus() {
   return (
     <div className="queue-page">
       <div className="queue-container">
-        <h1>🏥 Queue Status</h1>
-
-        <p className="queue-subtitle">
-          Check your live appointment queue details
-        </p>
+        <h1>Hospital Queue Status</h1>
 
         <div className="queue-card">
-          <div className="queue-row">
-            <span>🎫 Token Number</span>
-            <strong>{queue.tokenNumber}</strong>
-          </div>
+          <p>
+            <strong>Token Number:</strong> #{queue.tokenNumber}
+          </p>
 
-          <div className="queue-row">
-            <span>👤 Patient Name</span>
-            <strong>{queue.patientName}</strong>
-          </div>
+          <p>
+            <strong>Patient:</strong> {queue.patientName}
+          </p>
 
-          <div className="queue-row">
-            <span>👨‍⚕️ Doctor</span>
-            <strong>{queue.doctor}</strong>
-          </div>
+          <p>
+            <strong>Doctor:</strong> {queue.doctor}
+          </p>
 
-          <div className="queue-row">
-            <span>🏥 Department</span>
-            <strong>{queue.department}</strong>
-          </div>
+          <p>
+            <strong>Department:</strong> {queue.department}
+          </p>
 
-          <div className="queue-row">
-            <span>📍 Queue Position</span>
-            <strong>{queue.tokenNumber}</strong>
-          </div>
+          <p>
+            <strong>Date:</strong> {queue.date}
+          </p>
 
-          <div className="queue-row">
-            <span>⏱ Estimated Waiting Time</span>
-            <strong>{(queue.tokenNumber - 1) * 10} Minutes</strong>
-          </div>
+          <p>
+            <strong>Time:</strong> {queue.time}
+          </p>
 
-          <div className="queue-row">
-            <span>📢 Status</span>
-            <strong className="status waiting">
-              {queue.status}
-            </strong>
-          </div>
+          <p>
+            <strong>People Ahead:</strong> {queue.peopleAhead}
+          </p>
+
+          <p>
+            <strong>Estimated Wait:</strong>{" "}
+            {queue.estimatedWait > 0
+              ? `${queue.estimatedWait} Minutes`
+              : "You're Next"}
+          </p>
+
+          <p>
+            <strong>Status:</strong> {queue.status}
+          </p>
         </div>
+
+        <button
+          className="queue-btn"
+          onClick={fetchQueueStatus}
+        >
+          Refresh Status
+        </button>
       </div>
     </div>
   );

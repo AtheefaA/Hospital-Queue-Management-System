@@ -73,7 +73,7 @@ function AdminDashboard() {
             <h3>📊 Reports</h3>
             <p>View reports and analytics.</p>
 
-            <Link to="/">
+            <Link to="/reports">
               <button>Open</button>
             </Link>
           </div>

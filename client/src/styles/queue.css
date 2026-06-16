@@ -1,91 +1,182 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* ==========================================================================
+   1. Page Layout & Background
+   ========================================================================== */
 .queue-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #e3f2fd, #ffffff);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  background: linear-gradient(135deg, #e0e8f5 0%, #cbd5e1 100%);
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
 }
 
+/* ==========================================================================
+   2. Main Container
+   ========================================================================== */
 .queue-container {
-  width: 100%;
-  max-width: 700px;
   background: #ffffff;
+  width: 100%;
+  max-width: 550px;
   padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .queue-container h1 {
-  text-align: center;
-  color: #1565c0;
-  margin-bottom: 10px;
+  color: #0f172a;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  letter-spacing: -0.5px;
 }
 
-.queue-subtitle {
-  text-align: center;
-  color: #666;
-  margin-bottom: 30px;
+.queue-container h1::before {
+  content: "📊 ";
 }
 
+.queue-container h2 {
+  color: #334155;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* Loading & Refresh adjustments */
+.queue-container h2::before {
+  content: "🔄 ";
+}
+
+/* ==========================================================================
+   3. Detailed Queue Info Card (Injecting Emojis via Row Positions)
+   ========================================================================== */
 .queue-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 25px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
 }
 
-.queue-row {
+.queue-card p {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #475569;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  background: #f5f9ff;
-  border-radius: 10px;
-  border-left: 5px solid #1565c0;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #e2e8f0;
 }
 
-.queue-row span {
-  font-size: 17px;
-  color: #444;
+.queue-card p:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
-.queue-row strong {
-  color: #1565c0;
-  font-size: 17px;
+.queue-card strong {
+  color: #1e293b;
+  font-weight: 600;
 }
 
-.status {
-  padding: 6px 14px;
-  border-radius: 20px;
-  color: white;
+/* Injecting Emojis smoothly before the text headers */
+.queue-card p:nth-child(1) strong::before { content: "🎟️ "; }
+.queue-card p:nth-child(2) strong::before { content: "👤 "; }
+.queue-card p:nth-child(3) strong::before { content: "👨‍⚕️ "; }
+.queue-card p:nth-child(4) strong::before { content: "🏢 "; }
+.queue-card p:nth-child(5) strong::before { content: "📅 "; }
+.queue-card p:nth-child(6) strong::before { content: "⏰ "; }
+.queue-card p:nth-child(7) strong::before { content: "👥 "; }
+.queue-card p:nth-child(8) strong::before { content: "⏳ "; }
+.queue-card p:nth-child(9) strong::before { content: "📌 "; }
+
+/* ==========================================================================
+   4. Highlighting Key Metrics Dynamically
+   ========================================================================== */
+.queue-card p:nth-child(1) {
+  background: #e0f2fe;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #bae6fd;
+}
+.queue-card p:nth-child(1) strong {
+  color: #0369a1;
 }
 
-.waiting {
-  background: orange;
+.queue-card p:nth-child(7),
+.queue-card p:nth-child(8) {
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
-.completed {
-  background: green;
+.queue-card p:nth-child(7) {
+  color: #b45309; /* Amber for people waiting ahead */
 }
 
-.cancelled {
-  background: red;
+.queue-card p:nth-child(8) {
+  color: #15803d; /* Green for waiting duration indicator */
 }
 
-@media (max-width: 768px) {
+/* ==========================================================================
+   5. Interactive Buttons
+   ========================================================================== */
+.queue-btn {
+  display: inline-block;
+  width: 100%;
+  padding: 14px;
+  background-color: #0284c7;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.2);
+}
+
+.queue-btn::before {
+  content: "🔄 ";
+}
+
+.queue-btn:hover {
+  background-color: #0369a1;
+  box-shadow: 0 6px 12px -1px rgba(2, 132, 199, 0.3);
+}
+
+.queue-btn:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   6. Responsive Layout Media Queries
+   ========================================================================== */
+@media (max-width: 480px) {
   .queue-container {
-    padding: 20px;
+    padding: 25px 20px;
+    border-radius: 12px;
   }
 
-  .queue-row {
+  .queue-container h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .queue-card {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .queue-card p {
     flex-direction: column;
-    gap: 8px;
-    text-align: center;
+    align-items: flex-start;
+    gap: 4px;
+    padding-bottom: 8px;
   }
 }

@@ -1,8 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "../styles/dashboard.css";
 
 function DoctorDashboard() {
+  const [stats, setStats] = useState({
+    totalPatients: 0,
+    waitingPatients: 0,
+    completedPatients: 0,
+  });
+
+  useEffect(() => {
+    fetchDashboardStats();
+  }, []);
+
+  const fetchDashboardStats = async () => {
+    try {
+      const res = await axios.get(
+        "http://localhost:5000/api/appointments/stats"
+      );
+
+      setStats({
+        totalPatients: res.data.totalPatients,
+        waitingPatients: res.data.waitingPatients,
+        completedPatients: res.data.completedPatients,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="dashboard-page">
       <div className="dashboard-container">
@@ -14,36 +41,44 @@ function DoctorDashboard() {
           Manage appointments and patient queue
         </p>
 
+        {/* Statistics */}
         <div className="stats-grid">
           <div className="stat-card">
-            <h2>25</h2>
-            <p>Today's Patients</p>
+            <h2>{stats.totalPatients}</h2>
+            <p>Total Patients</p>
           </div>
 
           <div className="stat-card">
-            <h2>10</h2>
-            <p>Waiting</p>
+            <h2>{stats.waitingPatients}</h2>
+            <p>Waiting Patients</p>
           </div>
 
           <div className="stat-card">
-            <h2>15</h2>
-            <p>Completed</p>
+            <h2>{stats.completedPatients}</h2>
+            <p>Completed Patients</p>
           </div>
         </div>
 
+        {/* Dashboard Cards */}
         <div className="dashboard-grid">
           <div className="dashboard-card">
-            <h3>📋 View Patients</h3>
-            <p>View all today's patient appointments.</p>
+            <h3>📋 Manage Appointments</h3>
 
-            <Link to="/queue">
+            <p>
+              View and manage all patient appointments.
+            </p>
+
+            <Link to="/manage-appointments">
               <button>Open</button>
             </Link>
           </div>
 
           <div className="dashboard-card">
             <h3>🎫 Queue Management</h3>
-            <p>Manage the current hospital queue.</p>
+
+            <p>
+              Monitor the hospital queue status.
+            </p>
 
             <Link to="/queue">
               <button>Open</button>
@@ -52,9 +87,24 @@ function DoctorDashboard() {
 
           <div className="dashboard-card">
             <h3>✅ Completed Patients</h3>
-            <p>View completed appointments.</p>
 
-            <Link to="/book">
+            <p>
+              View completed patient appointments.
+            </p>
+
+            <Link to="/completed-patients">
+              <button>Open</button>
+            </Link>
+          </div>
+
+          <div className="dashboard-card">
+            <h3>📊 Reports</h3>
+
+            <p>
+              View reports and analytics.
+            </p>
+
+            <Link to="/reports">
               <button>Open</button>
             </Link>
           </div>
@@ -65,4 +115,3 @@ function DoctorDashboard() {
 }
 
 export default DoctorDashboard;
-

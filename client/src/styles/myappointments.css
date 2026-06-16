@@ -1,7 +1,11 @@
+/* =========================
+   My Appointments
+========================= */
+
 .appointments-page {
   min-height: 100vh;
-  background: #f4f8fc;
-  padding: 40px 20px;
+  background: linear-gradient(to right, #edf5fc, #f8fbff);
+  padding: 50px 20px;
 }
 
 .appointments-container {
@@ -11,40 +15,128 @@
 
 .appointments-container h1 {
   text-align: center;
-  color: #1976d2;
-  margin-bottom: 30px;
+  color: #1565c0;
+  font-size: 40px;
+  margin-bottom: 35px;
 }
+
+/* Card */
 
 .appointment-card {
   background: #ffffff;
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: 12px;
+  border-radius: 15px;
+  padding: 22px;
+  margin-bottom: 25px;
   border-left: 6px solid #1976d2;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
 }
 
-.appointment-card h2 {
+.appointment-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Header */
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.card-header h2 {
   color: #1976d2;
-  margin-bottom: 15px;
+  font-size: 26px;
 }
 
-.appointment-card p {
-  margin: 8px 0;
+/* Content */
+
+.card-content p {
+  margin: 10px 0;
+  font-size: 17px;
   color: #444;
-  font-size: 15px;
 }
+
+/* Status */
+
+.status {
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Waiting */
+
+.status.waiting {
+  background: #ffc107;
+  color: #333;
+}
+
+/* Completed */
+
+.status.completed {
+  background: #4caf50;
+  color: white;
+}
+
+/* Cancelled */
+
+.status.cancelled {
+  background: #f44336;
+  color: white;
+}
+
+/* In Progress */
+
+.status.inprogress {
+  background: #2196f3;
+  color: white;
+}
+
+/* Loading */
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #1976d2;
+}
+
+/* No Data */
+
+.no-data {
+  background: white;
+  padding: 40px;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+  color: #777;
+}
+
+/* Mobile */
 
 @media (max-width: 768px) {
   .appointments-container {
-    padding: 10px;
+    width: 100%;
   }
 
-  .appointment-card {
-    padding: 15px;
+  .appointments-container h1 {
+    font-size: 30px;
   }
 
-  .appointment-card h2 {
-    font-size: 20px;
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .card-header h2 {
+    font-size: 22px;
+  }
+
+  .card-content p {
+    font-size: 15px;
   }
 }

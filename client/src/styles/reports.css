@@ -1,0 +1,155 @@
+/* ==========================================================================
+   1. Page Layout & Core Styling
+   ========================================================================== */
+.reports-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   2. Main Container Header
+   ========================================================================== */
+.reports-container {
+  background: #ffffff;
+  width: 100%;
+  max-width: 900px;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+  box-sizing: border-box;
+}
+
+.reports-container h1 {
+  color: #0f172a;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+
+.reports-container > p {
+  color: #64748b;
+  font-size: 1.1rem;
+  margin: 0 0 35px 0;
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   3. Analytics Responsive Grid
+   ========================================================================== */
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ==========================================================================
+   4. Report Cards & Micro-Interactions
+   ========================================================================== */
+.report-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 30px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.report-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(15, 23, 42, 0.08);
+}
+
+/* Metric Number text */
+.report-card h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0 0 10px 0;
+  line-height: 1;
+}
+
+/* Description label text */
+.report-card p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #475569;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ==========================================================================
+   5. Dynamic Context Accents & Emojis
+   ========================================================================== */
+
+/* Card 1: Total Patients (Blue Accent) */
+.report-card:nth-child(1) {
+  border-top: 5px solid #0ea5e9;
+  background: linear-gradient(to bottom, #f0f9ff, #ffffff 40%);
+}
+.report-card:nth-child(1) h2 {
+  color: #0369a1;
+}
+.report-card:nth-child(1) p::before {
+  content: "👥";
+}
+
+/* Card 2: Waiting Patients (Amber Accent) */
+.report-card:nth-child(2) {
+  border-top: 5px solid #f59e0b;
+  background: linear-gradient(to bottom, #fffbeb, #ffffff 40%);
+}
+.report-card:nth-child(2) h2 {
+  color: #b45309;
+}
+.report-card:nth-child(2) p::before {
+  content: "⏳";
+}
+
+/* Card 3: Completed Patients (Green Accent) */
+.report-card:nth-child(3) {
+  border-top: 5px solid #10b981;
+  background: linear-gradient(to bottom, #f0fdf4, #ffffff 40%);
+}
+.report-card:nth-child(3) h2 {
+  color: #15803d;
+}
+.report-card:nth-child(3) p::before {
+  content: "✅";
+}
+
+/* ==========================================================================
+   6. Mobile & Tablet Adaptations
+   ========================================================================== */
+@media (max-width: 768px) {
+  .reports-grid {
+    grid-template-columns: 1fr; /* Stack cards vertically on tablets/phones */
+    gap: 16px;
+  }
+  
+  .reports-container {
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  .reports-container h1 {
+    font-size: 1.8rem;
+  }
+  
+  .report-card {
+    padding: 24px 16px;
+  }
+  
+  .report-card h2 {
+    font-size: 2.5rem;
+  }
+}
